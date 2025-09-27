@@ -1,6 +1,7 @@
 const { Given, When, Then } = require("@badeball/cypress-cucumber-preprocessor");
 const loginPage = require("../../e2e/page_objects/login_page");
 const homePage = require("../../e2e/page_objects/home_page");
+const landingPage = require("../../e2e/page_objects/landing_page");
 
 const userEmail = () => Cypress.env("USER_EMAIL");
 const userPassword = () => Cypress.env("USER_PASSWORD");
@@ -8,6 +9,16 @@ const userPassword = () => Cypress.env("USER_PASSWORD");
 Given("I am on the login page", () => {
     loginPage.visit();
     cy.url().should("include", loginPage.url);
+});
+
+Given("I am on the landing page", () => {
+    landingPage.visit();
+    cy.url().should("include", landingPage.url);
+});
+
+Given("I click login on the navbar", () => {
+    landingPage.loginButton().click();
+    landingPage.loginHudlButton().click();
 });
 
 When("I sign in with valid credentials", () => {
@@ -68,7 +79,17 @@ Then("I should see an invalid email error", () => {
 
 Then("I should land on the user homepage", () => {
     cy.url().should("include", homePage.url);
+    homePage.homeButton().should("be.visible");
 });
+
+Then("the navbar should show my user", () => {
+    homePage.profileButton().should("be.visible");
+});
+
+Then("the navbar should not show my user", () => {
+    homePage.profileButton().should("not.exist");
+});
+
 
 
 Then("I should remain on the login page", () => {
@@ -79,3 +100,16 @@ Then("I should see an email password mismatch error", () => {
     loginPage.emailPasswordMismatchError().should("be.visible")
 });
 
+
+
+// this might seem superfluous, but without a test that the errors are not visible
+// in the first place, later checks for error visibility are incomplete
+Then("no email errors should be displayed",  () => {
+    loginPage.emailInvalidError().should("not.be.visible")
+    loginPage.emailRequiredError().should("not.be.visible")
+});
+
+Then("no password errors should be displayed",  () => {
+    loginPage.passwordRequiredError().should("not.be.visible")
+    loginPage.emailPasswordMismatchError().should("not.exist")
+});

@@ -8,6 +8,7 @@ module.exports = defineConfig({
         baseUrl: "https://www.hudl.com",
         specPattern: "cypress/e2e/**/*.feature",
         supportFile: "cypress/support/e2e.js",
+        chromeWebSecurity: false, /* Enabling cross origin between login and landing pages */
         async setupNodeEvents(on, config) {
             // Set up the cucumber preprocessor plugin
             await addCucumberPreprocessorPlugin(on, config);
