@@ -1,6 +1,6 @@
 class LandingPage {
     get url() {
-        return "/";
+        return "/en_gb";
     }
 
     visit() {

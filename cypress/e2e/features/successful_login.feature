@@ -13,3 +13,9 @@ Feature: Successful login
     Then I should land on the user homepage
     And the navbar should show my user
 
+  Scenario: Log out
+    Given I am on the login page
+    And I sign in with valid credentials
+    When I sign out
+    Then I should land on the landing page
+    And the navbar should say 'log in'

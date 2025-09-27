@@ -61,8 +61,13 @@ When("I submit the login form empty", () => {
     loginPage.continue().click();
 });
 
-When("I restart the browser", () => {
-    cy.window().then((w) => w.location.reload());
+When("I sign out", () => {
+    homePage.profileButton().realHover();
+    homePage.logOutButton().click();
+});
+
+Then("the navbar should say 'log in'", () => {
+    landingPage.loginButton().should("be.visible");
 });
 
 Then("I should see an empty email error", () => {
@@ -82,6 +87,10 @@ Then("I should land on the user homepage", () => {
     homePage.homeButton().should("be.visible");
 });
 
+Then("I should land on the landing page", () => {
+    cy.url().should("include", landingPage.url);
+});
+
 Then("the navbar should show my user", () => {
     homePage.profileButton().should("be.visible");
 });
@@ -89,8 +98,6 @@ Then("the navbar should show my user", () => {
 Then("the navbar should not show my user", () => {
     homePage.profileButton().should("not.exist");
 });
-
-
 
 Then("I should remain on the login page", () => {
     cy.url().should("include", loginPage.url);
@@ -100,10 +107,10 @@ Then("I should see an email password mismatch error", () => {
     loginPage.emailPasswordMismatchError().should("be.visible")
 });
 
-
-
-// this might seem superfluous, but without a test that the errors are not visible
-// in the first place, later checks for error visibility are incomplete
+/*
+This might seem superfluous, but without a test that the errors are not visible
+in the first place, later checks for error visibility are incomplete
+*/
 Then("no email errors should be displayed",  () => {
     loginPage.emailInvalidError().should("not.be.visible")
     loginPage.emailRequiredError().should("not.be.visible")

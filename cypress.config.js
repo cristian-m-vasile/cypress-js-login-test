@@ -5,7 +5,7 @@ const { createEsbuildPlugin } = require("@badeball/cypress-cucumber-preprocessor
 
 module.exports = defineConfig({
     e2e: {
-        baseUrl: "https://www.hudl.com",
+        baseUrl: "https://www.hudl.com/",
         specPattern: "cypress/e2e/**/*.feature",
         supportFile: "cypress/support/e2e.js",
         chromeWebSecurity: false, /* Enabling cross origin between login and landing pages */

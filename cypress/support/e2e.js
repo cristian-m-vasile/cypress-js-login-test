@@ -14,4 +14,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+// needed to properly emulate hover functionality
+import 'cypress-real-events';
+// needed to allow cross-origin navigation
+Cypress.on('uncaught:exception', () => { return false })

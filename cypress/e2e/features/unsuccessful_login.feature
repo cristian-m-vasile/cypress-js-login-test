@@ -3,7 +3,7 @@ Feature: Unsuccessful login
   Background:
     Given I am on the login page
 
-  Scenario: No email appear to start with
+  Scenario: No email errors appear to start with
     Then no email errors should be displayed
 
   Scenario: No password errors appear to start with
