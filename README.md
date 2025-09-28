@@ -26,11 +26,12 @@ It uses **BDD with Cucumber** and the **Page Object Model (POM)** to ensure main
 - [ESBuild](https://esbuild.github.io/) (fast preprocessing)
 - [cypress-real-events](https://github.com/dmtrKovalenko/cypress-real-events)
 
-## Pre-requisites
+## How to run locally
+
+### Pre-requisites
 
 1. install node & npm: `https://nodejs.org/en/download/package-manager`
-
-## How to run
+2. install chrome: `https://www.google.com/chrome/`
 
 ### 1. Install dependencies
 ```bash
