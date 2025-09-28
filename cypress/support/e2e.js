@@ -15,7 +15,20 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
+
 // needed to properly emulate hover functionality
 import 'cypress-real-events';
+
 // needed to allow cross-origin navigation
-Cypress.on('uncaught:exception', () => { return false })
+Cypress.on('uncaught:exception', (err) => {
+    const msg = err?.message || '';
+
+    // Known noisy error when using cross-origin testing
+    const nullPostMessage = msg.includes("Cannot read properties of null (reading 'postMessage')");
+
+    if (nullPostMessage) {
+        // return false tells Cypress: "don't fail the test for this one"
+        return false;
+    }
+    // Let Cypress fail on everything else
+});
