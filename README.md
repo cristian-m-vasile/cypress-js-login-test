@@ -1,4 +1,5 @@
 # Login Automation Framework
+[![E2E (Cypress)](https://github.com/cristian-m-vasile/cypress-js-login-test/actions/workflows/cypress.yml/badge.svg)](https://github.com/cristian-m-vasile/cypress-js-login-test/actions/workflows/cypress.yml)
 
 This project is a **Cypress** automation framework for testing login functionality.  
 It uses **BDD with Cucumber** and the **Page Object Model (POM)** to ensure maintainability and readability.
@@ -37,7 +38,7 @@ npm install
 ```
 
 ### 2. Configure environment variables
-Create a `cypress.env.json` file in the project root:
+Create a `cypress.env.json` file in the project root with your secure credentials:
 
 ```json
 {
@@ -50,6 +51,8 @@ Create a `cypress.env.json` file in the project root:
 ```bash
 npx cypress open
 ```
+If you're new to Cypress, select 'Continue' on the 'What's new' menu, then 'E2E testing', then 'Chrome', then select
+each feature file one by one.
 
 ### 4. Run tests headless
 ```bash
@@ -85,3 +88,6 @@ The exercise was timeboxed to 2-3 hours. If I had more time, this is what I woul
 - Add **test tags** (`@smoke`, `@regression`) for selective runs
 - Extend with **API-level tests** for faster feedback
 - Improve reporting (e.g., Mochawesome or Allure)
+- Test resetting the password using a secret that’s continuously reset in GitHub actions
+- Run basic security checks like testing SQL injection / XSS attempts (not attempted as I only have access to the
+production environment)
