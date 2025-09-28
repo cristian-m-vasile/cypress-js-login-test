@@ -32,7 +32,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           command: npx cypress run --browser ${{ matrix.browser }}
-          config-file: cypress.config.js
         env:
           CYPRESS_USER_EMAIL: ${{ secrets.CYPRESS_USER_EMAIL }}
           CYPRESS_USER_PASSWORD: ${{ secrets.CYPRESS_USER_PASSWORD }}
