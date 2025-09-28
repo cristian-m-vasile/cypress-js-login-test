@@ -1,14 +1,31 @@
 class LandingPage {
+    // URL
     get url() {
         return "/en_gb";
     }
 
+    // Locators
+    getMainContent() {
+        return cy.get("#maincontent");
+    }
+
+    getLoginButton() {
+        return cy.get('[data-qa-id="login-select"]');
+    }
+
+    getLoginHudlButton() {
+        return cy.get('[data-qa-id="login-hudl"]');
+    }
+
+    // Actions
     visit() {
         cy.visit(this.url);
     }
 
-    mainContent() { return cy.get("#maincontent"); }
-    loginButton() { return cy.get('[data-qa-id="login-select"]'); }
-    loginHudlButton() { return cy.get('[data-qa-id="login-hudl"]'); }
+    clickLogin() {
+        this.getLoginButton().click();
+        this.getLoginHudlButton().click();
+    }
 }
-module.exports = new LandingPage();
+
+export const landingPage = new LandingPage();

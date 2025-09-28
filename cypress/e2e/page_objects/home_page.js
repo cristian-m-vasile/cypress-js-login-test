@@ -1,15 +1,34 @@
 class HomePage {
+    // URL
     get url() {
         return "/home";
     }
 
+    // Locators
+    getHomeButton() {
+        return cy.get('[data-qa-id="webnav-globalnav-home"]');
+    }
+
+    getProfileButton() {
+        return cy.get(".hui-globalusermenu");
+    }
+
+    getLogoutButton() {
+        return cy.get('[data-qa-id="webnav-usermenu-logout"]').first();
+    }
+
+    // Actions
     visit() {
         cy.visit(this.url);
     }
 
-    homeButton() { return cy.get('[data-qa-id="webnav-globalnav-home"]'); }
-    profileButton() { return cy.get('.hui-globalusermenu'); }
-    logOutButton() { return cy.get('[data-qa-id="webnav-usermenu-logout"]').first(); }
+    hoverProfile() {
+        this.getProfileButton().realHover();
+    }
 
+    clickLogout() {
+        this.getLogoutButton().click();
+    }
 }
-module.exports = new HomePage();
+
+export const homePage = new HomePage();

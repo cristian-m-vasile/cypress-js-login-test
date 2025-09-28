@@ -1,39 +1,54 @@
 class LoginPage {
+    // URL
     get url() {
         return "/login";
     }
 
+    // Locators
+    getEmailInput() {
+        return cy.get("#username");
+    }
+
+    getPasswordInput() {
+        return cy.get("#password");
+    }
+
+    getContinueButton() {
+        return cy.contains("button, [type='submit']", /continue/i);
+    }
+
+    getEmailPasswordMismatchError() {
+        return cy.get("#error-element-password");
+    }
+
+    getEmailRequiredError() {
+        return cy.get("#error-cs-username-required");
+    }
+
+    getEmailInvalidError() {
+        return cy.get("#error-cs-email-invalid");
+    }
+
+    getPasswordRequiredError() {
+        return cy.get("#error-cs-password-required");
+    }
+
+    // Actions
     visit() {
         cy.visit(this.url);
     }
 
-    email() {
-        return cy.get("#username");
+    enterEmail(email) {
+        this.getEmailInput().clear().type(email);
     }
 
-    password() {
-        return cy.get("#password");
+    enterPassword(password) {
+        this.getPasswordInput().clear().type(password, { log: false });
     }
 
-    continue() {
-        return cy.contains("button, [type='submit']", /continue/i);
-    }
-
-    emailPasswordMismatchError() {
-        return cy.get("#error-element-password");
-    }
-
-    emailRequiredError() {
-        return cy.get("#error-cs-username-required");
-    }
-
-    emailInvalidError() {
-        return cy.get("#error-cs-email-invalid");
-    }
-
-    passwordRequiredError() {
-        return cy.get("#error-cs-password-required");
+    clickContinue() {
+        this.getContinueButton().click();
     }
 }
 
-module.exports = new LoginPage();
+export const loginPage = new LoginPage();
