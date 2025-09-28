@@ -17,5 +17,5 @@ Feature: Successful login
     Given I am on the login page
     And I sign in with valid credentials
     When I sign out
-    Then I should land on the landing page
-    And the navbar should say 'log in'
+    Then I should be redirected to the landing page
+    And the navbar should now say 'log in'

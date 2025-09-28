@@ -7,6 +7,7 @@ class LandingPage {
         cy.visit(this.url);
     }
 
+    mainContent() { return cy.get("#maincontent"); }
     loginButton() { return cy.get('[data-qa-id="login-select"]'); }
     loginHudlButton() { return cy.get('[data-qa-id="login-hudl"]'); }
 }

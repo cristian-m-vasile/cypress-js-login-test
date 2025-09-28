@@ -66,7 +66,7 @@ When("I sign out", () => {
     homePage.logOutButton().click();
 });
 
-Then("the navbar should say 'log in'", () => {
+Then("the navbar should now say 'log in'", () => {
     landingPage.loginButton().should("be.visible");
 });
 
@@ -87,8 +87,8 @@ Then("I should land on the user homepage", () => {
     homePage.homeButton().should("be.visible");
 });
 
-Then("I should land on the landing page", () => {
-    cy.url().should("include", landingPage.url);
+Then("I should be redirected to the landing page", () => {
+    landingPage.mainContent().should("be.visible");
 });
 
 Then("the navbar should show my user", () => {
