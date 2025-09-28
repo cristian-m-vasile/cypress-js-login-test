@@ -51,8 +51,8 @@ Create a `cypress.env.json` file in the project root with your secure credential
 ```bash
 npx cypress open
 ```
-If you're new to Cypress, select 'Continue' on the 'What's new' menu, then 'E2E testing', then 'Chrome', then select
-each feature file one by one.
+If you're new to Cypress, select 'Continue' on the 'What's new' menu, then 'E2E testing' -> 'Chrome' -> 'Start E2E
+testing in Chrome', then select each feature file one by one.
 
 ### 4. Run tests headless
 ```bash
